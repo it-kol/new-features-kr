@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>몰입형 번역 × KOL 브리핑 · 2026 새 기능</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 60px; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Helvetica Neue", sans-serif;
+  color: #1D1D1F;
+  line-height: 1.6;
+  background: #FBFBFD;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(135deg, #1D1D1F 0%, #2D2D30 100%);
+  color: white;
+  padding: 64px 32px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: -20%; right: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(234,76,137,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero-logo {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.hero-badge {
+  background: rgba(234,76,137,0.2);
+  color: #FF8DB5;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.hero h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+  letter-spacing: -0.5px;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, #FF68A2, #FF8DB5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ===== Nav ===== */
+.nav-bar {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid #E8E8ED;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 52px;
+  overflow-x: auto;
+  font-size: 13.5px;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-link {
+  color: #666;
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: all 0.15s;
+  font-weight: 500;
+}
+.nav-link:hover { background: #FFF0F5; color: #EA4C89; }
+.nav-link.active {
+  background: #FFF0F5;
+  color: #EA4C89;
+  font-weight: 600;
+}
+
+/* ===== Layout ===== */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+.section { padding: 64px 0 48px; }
+.section-alt { background: #F5F5F7; }
+
+/* ===== Section Header ===== */
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.sec-title {
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.3px;
+}
+.sec-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, #FF68A2, #EA4C89);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.sec-logo {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.sec-hint { font-size: 13px; color: #999; font-weight: 400; }
+
+/* ========================================
+   두 가지 핵심 기능 — 흰 배경 대형 이미지
+   ======================================== */
+.ace-feature {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  margin-bottom: 32px;
+  overflow: hidden;
+  border: 1px solid #E8E8ED;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+
+.ace-head {
+  padding: 32px 36px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.ace-head-icon {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #FF68A2, #EA4C89);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(234,76,137,0.25);
+}
+.ace-head-text h2 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+.ace-head-text h2 em {
+  font-style: normal;
+  color: #EA4C89;
+}
+.ace-head-text p {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+  line-height: 1.6;
+}
+
+.ace-hero-img {
+  margin: 24px 36px 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #E8E8ED;
+  cursor: zoom-in;
+  transition: box-shadow 0.2s;
+}
+.ace-hero-img:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.ace-hero-img img { width: 100%; display: block; }
+
+.ace-pills {
+  display: flex; gap: 8px; margin: 20px 36px 0;
+  flex-wrap: wrap;
+}
+.ace-pill {
+  background: #FFF0F5;
+  border: 1px solid #FFD6E4;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #EA4C89;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.speed-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 36px 0;
+}
+.speed-side {
+  background: #FAFAFA;
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid #F0F0F0;
+}
+.speed-side.fast {
+  border-color: #FFD6E4;
+  background: linear-gradient(135deg, #FFF5F8, white);
+}
+.speed-name { font-size: 12px; color: #888; margin-bottom: 6px; font-weight: 500; }
+.speed-name em { font-style: normal; color: #EA4C89; font-weight: 600; }
+.speed-track {
+  height: 6px; background: #F0F0F0;
+  border-radius: 3px; overflow: hidden; margin-bottom: 6px;
+}
+.speed-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF68A2, #EA4C89);
+  border-radius: 3px;
+}
+.speed-val { font-size: 20px; font-weight: 800; }
+.speed-val.slow { color: #CCC; }
+.speed-val .u { font-size: 11px; color: #999; margin-left: 2px; }
+
+.ace-scenes {
+  margin: 28px 36px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ace-scene-row {
+  border: 1px solid #F0F0F0;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ace-scene-row:hover {
+  border-color: #FFD6E4;
+  box-shadow: 0 4px 20px rgba(234,76,137,0.06);
+}
+.ace-scene-info {
+  padding: 16px 20px 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.ace-scene-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #EA4C89;
+  background: #FFF0F5;
+  padding: 3px 8px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+.ace-scene-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1D1D1F;
+}
+.ace-scene-desc {
+  font-size: 13px;
+  color: #666;
+  padding: 0 20px 12px;
+  line-height: 1.5;
+}
+.ace-scene-desc b { color: #EA4C89; font-weight: 600; }
+
+.ace-scene-media {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 0 20px 20px;
+}
+.ace-scene-media .media-box {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #F0F0F0;
+  cursor: zoom-in;
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #F5F5F5;
+}
+.ace-scene-media .media-box img {
+  width: 100%; height: 100%;
+  display: block; object-fit: cover;
+  transition: transform 0.3s;
+}
+.ace-scene-media .media-box:hover img { transform: scale(1.03); }
+.media-tag {
+  position: absolute; top: 8px; left: 8px;
+  background: rgba(0,0,0,0.65);
+  color: white;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  display: flex; align-items: center; gap: 4px;
+  pointer-events: none;
+}
+.media-tag .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #FF68A2;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.gif-poster { cursor: pointer; position: relative; }
+.gif-poster::after {
+  content: '\25B6';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 44px; height: 44px;
+  background: rgba(234,76,137,0.9);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; color: white;
+  pointer-events: none;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 16px rgba(234,76,137,0.3);
+}
+.gif-poster:hover::after { transform: translate(-50%,-50%) scale(1.12); }
+.gif-poster.playing::after { display: none; }
+
+.ace-howto-strip {
+  margin: 0 36px 28px;
+  padding: 16px 20px;
+  background: #FAFAFA;
+  border-radius: 12px;
+  border: 1px solid #F0F0F0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ace-howto-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+.ace-howto-steps {
+  font-size: 13px;
+  color: #555;
+  flex: 1;
+}
+.ace-howto-steps em {
+  font-style: normal;
+  color: #EA4C89;
+  font-weight: 600;
+}
+.ace-howto-thumbs {
+  display: flex;
+  gap: 8px;
+}
+.ace-howto-thumbs img {
+  width: 80px; height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #E8E8ED;
+  cursor: zoom-in;
+}
+
+/* ===== 6개 기능 카드 ===== */
+.feat-scroll-wrap {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 0 -32px;
+  padding: 4px 32px 20px;
+}
+.feat-scroll-wrap::-webkit-scrollbar { height: 6px; }
+.feat-scroll-wrap::-webkit-scrollbar-thumb { background: #FFB8CF; border-radius: 3px; }
+
+.feat-scroll {
+  display: flex;
+  gap: 16px;
+  padding-right: 16px;
+}
+.feat-card {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: white;
+  border: 1px solid #E8E8ED;
+  border-radius: 16px;
+  padding: 22px;
+  transition: all 0.2s;
+  cursor: default;
+}
+.feat-card:hover {
+  border-color: #FFD6E4;
+  box-shadow: 0 6px 24px rgba(234,76,137,0.08);
+  transform: translateY(-3px);
+}
+.feat-card.must { border-color: #FFD6E4; }
+.feat-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.feat-icon {
+  width: 34px; height: 34px;
+  background: #F5F5F7;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.feat-card.must .feat-icon {
+  background: linear-gradient(135deg, #FF68A2, #EA4C89);
+}
+.feat-name { font-size: 14px; font-weight: 700; flex: 1; line-height: 1.3; }
+.feat-tag {
+  font-size: 10px; padding: 2px 7px;
+  border-radius: 4px; font-weight: 600; flex-shrink: 0;
+}
+.feat-tag.must { background: #EA4C89; color: white; }
+.feat-tag.hot { background: #FFF3E0; color: #E65100; }
+.feat-tag.aux { background: #F0F0F0; color: #888; }
+.feat-desc { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 12px; }
+
+.feat-img-box {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #F0F0F0;
+  cursor: zoom-in;
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #F5F5F5;
+}
+.feat-img-box img {
+  width: 100%; height: 100%;
+  display: block; object-fit: cover;
+  transition: transform 0.3s;
+}
+.feat-img-box:hover img { transform: scale(1.03); }
+.feat-img-box.tall img { object-fit: contain; }
+
+.feat-video {
+  width: 100%;
+  border-radius: 10px;
+  background: #F5F5F5;
+  cursor: pointer;
+  border: 1px solid #F0F0F0;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.feat-hook {
+  font-size: 12px;
+  color: #EA4C89;
+  font-weight: 600;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #F5F5F5;
+}
+
+.feat-video-link {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #F0F0F0;
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #F5F5F5;
+}
+.feat-video-link img {
+  width: 100%; height: 100%;
+  display: block; object-fit: cover;
+  transition: transform 0.3s, filter 0.3s;
+}
+.feat-video-link:hover img {
+  transform: scale(1.04);
+  filter: brightness(0.8);
+}
+.yt-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 56px; height: 40px;
+  background: #FF0000;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+  pointer-events: none;
+}
+.feat-video-link:hover .yt-play-btn { transform: translate(-50%,-50%) scale(1.08); }
+.yt-play-btn::before {
+  content: '';
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent white;
+  margin-left: 3px;
+}
+.yt-badge {
+  position: absolute; bottom: 8px; right: 8px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* ===== KOL 카드 ===== */
+.kol-scroll-wrap {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 0 -32px;
+  padding: 4px 32px 20px;
+}
+.kol-scroll-wrap::-webkit-scrollbar { height: 6px; }
+.kol-scroll-wrap::-webkit-scrollbar-thumb { background: #FFB8CF; border-radius: 3px; }
+.kol-scroll {
+  display: flex;
+  gap: 14px;
+  padding-right: 14px;
+}
+.kol-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  background: white;
+  border: 1px solid #E8E8ED;
+  border-radius: 14px;
+  padding: 20px;
+  transition: all 0.15s;
+}
+.kol-card:hover {
+  border-color: #FFD6E4;
+  box-shadow: 0 4px 16px rgba(234,76,137,0.06);
+  transform: translateY(-2px);
+}
+.kol-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F5F5F5;
+}
+.kol-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, #FFF0F5, #FFE0EC);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.kol-name { font-size: 14px; font-weight: 700; }
+.kol-sub { font-size: 11px; color: #999; margin-top: 2px; }
+.kol-list { list-style: none; font-size: 12.5px; color: #555; }
+.kol-list li {
+  padding: 5px 0;
+  display: flex; align-items: flex-start; gap: 6px;
+  line-height: 1.4;
+}
+.kol-list li::before {
+  content: "✓";
+  color: #EA4C89;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.kol-list li b { color: #1D1D1F; font-weight: 600; }
+
+/* ===== 비즈니스 상담 ===== */
+.contact-strip {
+  background: linear-gradient(135deg, #1D1D1F 0%, #2D2D30 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 36px 40px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.contact-strip::before {
+  content: "";
+  position: absolute;
+  bottom: -30%; left: -10%;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(234,76,137,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.contact-strip h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  position: relative;
+}
+.contact-strip .contact-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+  position: relative;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  position: relative;
+}
+.contact-cell {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 20px 12px 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.contact-platform {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+}
+.copy-btn {
+  width: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FF8DB5;
+  background: rgba(234,76,137,0.12);
+  border: 1px solid rgba(234,76,137,0.25);
+  padding: 10px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.copy-btn:hover {
+  background: rgba(234,76,137,0.25);
+  border-color: rgba(234,76,137,0.5);
+  color: white;
+}
+.copy-btn.copied {
+  background: rgba(76,175,80,0.3) !important;
+  border-color: rgba(76,175,80,0.5) !important;
+  color: white !important;
+}
+
+/* ===== 푸터 ===== */
+.site-footer {
+  background: #1D1D1F;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 40px 24px 32px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.site-footer .f-brand {
+  color: #FF8DB5;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.site-footer a {
+  color: rgba(255,141,181,0.7);
+  text-decoration: none;
+}
+
+/* ===== Lightbox ===== */
+.lightbox {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img, .lightbox video {
+  max-width: 92vw;
+  max-height: 85vh;
+  border-radius: 8px;
+  box-shadow: 0 8px 60px rgba(0,0,0,0.6);
+  object-fit: contain;
+}
+.lightbox video { cursor: default; background: #000; }
+.lightbox-x {
+  position: fixed; top: 20px; right: 24px;
+  width: 42px; height: 42px;
+  background: rgba(255,255,255,0.15);
+  border: none; border-radius: 50%;
+  color: white; font-size: 20px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10001;
+}
+.lightbox-x:hover { background: rgba(255,255,255,0.3); }
+
+/* ===== 반응형 ===== */
+@media (max-width: 880px) {
+  .hero h1 { font-size: 30px; }
+  .sec-title { font-size: 22px; }
+  .ace-head { padding: 24px 24px 0; }
+  .ace-hero-img { margin: 20px 24px 0; }
+  .ace-pills { margin: 16px 24px 0; }
+  .speed-bar { margin: 20px 24px 0; }
+  .ace-scenes { margin: 24px 24px 0; }
+  .ace-howto-strip { margin: 0 24px 24px; }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .feat-card { flex: 0 0 270px; }
+  .kol-card { flex: 0 0 240px; }
+}
+@media (max-width: 520px) {
+  .hero { padding: 48px 20px 40px; }
+  .hero h1 { font-size: 26px; }
+  .wrap { padding: 0 20px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .feat-card { flex: 0 0 260px; }
+  .ace-head { padding: 20px 20px 0; }
+  .ace-hero-img { margin: 16px 20px 0; }
+  .ace-pills { margin: 14px 20px 0; }
+  .speed-bar { margin: 16px 20px 0; grid-template-columns: 1fr; }
+  .ace-scenes { margin: 20px 20px 0; }
+  .ace-scene-media { grid-template-columns: 1fr; }
+  .ace-howto-strip { margin: 0 20px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="hero-logo-row">
+    <img class="hero-logo" src="logo.jpg" alt="몰입형 번역">
+    <span class="hero-badge">2026 새 기능 빠르게 보기 · KOL 촬영 가이드</span>
+  </div>
+  <h1>중국 KOL × <em>몰입형 번역</em></h1>
+  <p class="hero-sub">BabelFast 초고속 번역 + 선택 영역 번역 · 관심 있는 기능을 골라 촬영하세요<br>지난 반년간 가장 돋보였던 업데이트 기능이며, 새로운 기능이 추가되면 계속 업데이트됩니다</p>
+</header>
+
+<!-- ===== 내비게이션 ===== -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a class="nav-link" href="#sec-ace">두 가지 핵심 기능</a>
+    <a class="nav-link" href="#sec-feat">6개 새 기능</a>
+    <a class="nav-link" href="#sec-kol">크리에이터 유형</a>
+    <a class="nav-link" href="#sec-contact">비즈니스 상담</a>
+  </div>
+</nav>
+
+<!-- ==============================================
+     두 가지 핵심 기능
+     ============================================== -->
+<section class="section" id="sec-ace" style="padding-bottom:32px;">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-title">
+        <span class="sec-icon">⚡</span>
+        <span>두 가지 핵심 기능 · 집중 촬영</span>
+      </div>
+      <span class="sec-hint">이번 시즌 차별화의 핵심</span>
+    </div>
+
+    <!-- ========== BabelFast ========== -->
+    <div class="ace-feature">
+      <div class="ace-head">
+        <div class="ace-head-icon">⚡</div>
+        <div class="ace-head-text">
+          <h2>BabelFast <em>초고속 번역</em></h2>
+          <p>완전히 새로운 실험적 엔진. 만 단어 분량의 긴 글을 순식간에 번역 — 번역을 시작하고 결과를 보기까지 "로딩"이 없습니다. 속도 비교는 가장 강력한 유료 전환 소재입니다.</p>
+        </div>
+      </div>
+
+      <div class="ace-hero-img" onclick="openLb(this)">
+        <img src="assets/bf-banner.jpg" alt="BabelFast · 전체 페이지 패키징 · 병렬 번역 · 초고속 엔진">
+      </div>
+
+      <div class="speed-bar">
+        <div class="speed-side fast">
+          <div class="speed-name">BabelFast <em>· 순간 완료</em></div>
+          <div class="speed-track"><div class="speed-fill" style="width:12%"></div></div>
+          <div class="speed-val">0.3<span class="u">초</span></div>
+        </div>
+        <div class="speed-side">
+          <div class="speed-name">일반 엔진</div>
+          <div class="speed-track"><div class="speed-fill" style="width:100%;opacity:0.25"></div></div>
+          <div class="speed-val slow">3.2<span class="u">초</span></div>
+        </div>
+      </div>
+
+      <div class="ace-pills">
+        <span class="ace-pill">🚀 10배 속도 향상</span>
+        <span class="ace-pill">📦 전체 페이지 병렬 패키징 번역</span>
+        <span class="ace-pill">🧪 실험적 엔진</span>
+      </div>
+
+      <div class="ace-scenes">
+        <!-- 장면 1 -->
+        <div class="ace-scene-row">
+          <div class="ace-scene-info">
+            <span class="ace-scene-tag">필수</span>
+            <span class="ace-scene-title">분할 화면 비교</span>
+          </div>
+          <div class="ace-scene-desc">같은 만 단어 장문을 왼쪽에 경쟁사/일반 엔진, 오른쪽에 BabelFast로 번역. 타이머를 표시해 시간 차이가 클수록 임팩트가 강해집니다.</div>
+          <div class="ace-scene-media">
+            <div class="media-box gif-poster" data-gif="assets/bf-split.gif" onclick="toggleGif(this)">
+              <img src="assets/bf-split_poster.jpg" alt="분할 화면 비교">
+              <span class="media-tag"><span class="dot"></span>GIF</span>
+            </div>
+          </div>
+        </div>
+        <!-- 장면 2 -->
+        <div class="ace-scene-row">
+          <div class="ace-scene-info">
+            <span class="ace-scene-tag">페인포인트</span>
+            <span class="ace-scene-title">로딩 없는 경험</span>
+          </div>
+          <div class="ace-scene-desc">새 기사 열기 → 원클릭 번역 → 번역 결과가 순간 나타남. 기다림이 없다는 점을 강조하세요.</div>
+          <div class="ace-scene-media">
+            <div class="media-box" onclick="openLb(this)">
+              <img src="assets/bf-painpoint.jpg" alt="이전: 화면을 바라보며 번역 대기">
+              <span class="media-tag">📷 페인포인트→해결</span>
+            </div>
+          </div>
+        </div>
+        <!-- 장면 3 -->
+        <div class="ace-scene-row">
+          <div class="ace-scene-info">
+            <span class="ace-scene-tag">다양성</span>
+            <span class="ace-scene-title">다양한 콘텐츠 유형</span>
+          </div>
+          <div class="ace-scene-desc">논문, 위키백과, 투자 리서치, 만화… 팔로워에게 친숙한 소재를 골라 시연하세요.</div>
+          <div class="ace-scene-media">
+            <div class="media-box gif-poster" data-gif="assets/bf-multi.gif" onclick="toggleGif(this)">
+              <img src="assets/bf-multi_poster.jpg" alt="다양한 콘텐츠 유형">
+              <span class="media-tag"><span class="dot"></span>GIF</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ace-howto-strip">
+        <span class="ace-howto-label">활성화 방법</span>
+        <span class="ace-howto-steps"><em>1.30.3+</em>으로 업그레이드 → 설정 → 번역 서비스 → <em>BabelFast</em> 선택</span>
+        <div class="ace-howto-thumbs">
+          <img src="assets/bf-howto.png" onclick="openLb(this)" alt="설정 단계">
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 선택 영역 번역 ========== -->
+    <div class="ace-feature">
+      <div class="ace-head">
+        <div class="ace-head-icon">🎯</div>
+        <div class="ace-head-text">
+          <h2>선택 영역 번역 · <em>만능 화면 번역</em></h2>
+          <p>자막 번역은 "소리"만 번역할 수 있지만, 화면 속 글자는 "픽셀"입니다 — 영상 속 텍스트, PPT, 만화 말풍선, 화면 공유报表, 원하는 영역을 선택하면 번역이 원래 위치에 나타납니다.</p>
+        </div>
+      </div>
+
+      <div class="ace-hero-img" onclick="openLb(this)">
+        <img src="assets/cq-compare.webp" alt="자막 번역 vs 선택 영역 번역 비교图">
+      </div>
+
+      <div class="ace-pills">
+        <span class="ace-pill">✅ 끊김 없음</span>
+        <span class="ace-pill">🎯 정밀 영역 선택</span>
+        <span class="ace-pill">🎨 원래 레이아웃 유지</span>
+        <span class="ace-pill">🤖 20개 이상 AI 엔진</span>
+      </div>
+
+      <div class="ace-scenes">
+        <!-- 장면 1: vlog -->
+        <div class="ace-scene-row">
+          <div class="ace-scene-info">
+            <span class="ace-scene-tag">여행</span>
+            <span class="ace-scene-title">vlog · 메뉴 / 간판 / 자막</span>
+          </div>
+          <div class="ace-scene-desc">해외 여행 vlog 속 식당 메뉴, 간판 → 일시정지 → 영역 선택 → 번역이 나타납니다. 디지털 리뷰 속 <b>텍스트 오버레이, 벤치마크 차트</b> 등 자막으로 번역할 수 없는 것도 선택 영역 번역으로 해결.</div>
+          <div class="ace-scene-media">
+            <div class="media-box gif-poster" data-gif="assets/cq-menu.gif" onclick="toggleGif(this)">
+              <img src="assets/cq-menu_poster.jpg" alt="메뉴 선택 번역">
+              <span class="media-tag"><span class="dot"></span>GIF</span>
+            </div>
+            <div class="media-box" onclick="openLb(this)">
+              <img src="assets/cq-vlog-case.png" alt="vlog 사례" loading="lazy">
+              <span class="media-tag">📷 사례</span>
+            </div>
+          </div>
+        </div>
+        <!-- 장면 2: 튜토리얼 -->
+        <div class="ace-scene-row">
+          <div class="ace-scene-info">
+            <span class="ace-scene-tag">튜토리얼</span>
+            <span class="ace-scene-title">PPT / 칠판 / 코드</span>
+          </div>
+          <div class="ace-scene-desc">Coursera / Udemy 온라인 강의 → 일시정지 → <b>PPT 정의, 칠판 필기, 코드 시연</b> 영역 선택 → 원 위치에 중국어 표시.</div>
+          <div class="ace-scene-media">
+            <div class="media-box gif-poster" data-gif="assets/cq-ppt.gif" onclick="toggleGif(this)">
+              <img src="assets/cq-ppt_poster.jpg" alt="PPT 선택 번역">
+              <span class="media-tag"><span class="dot"></span>GIF</span>
+            </div>
+            <div class="media-box" onclick="openLb(this)">
+              <img src="assets/cq-step2.webp" alt="블로그 예시" loading="lazy">
+              <span class="media-tag">📷 블로그</span>
+            </div>
+          </div>
+        </div>
+        <!-- 장면 3: 만화 -->
+        <div class="ace-scene-row">
+          <div class="ace-scene-info">
+            <span class="ace-scene-tag">만화</span>
+            <span class="ace-scene-title">원본 · 대화 말풍선</span>
+          </div>
+          <div class="ace-scene-desc">일본 만화/한국 만화 → 보고 싶은 말풍선을 선택 → 번역이 옆에 나타납니다. 원본을 "매끄럽게" 즐길 수 있는 최초의 경험.</div>
+          <div class="ace-scene-media">
+            <div class="media-box gif-poster" data-gif="assets/cq-manga.gif" onclick="toggleGif(this)">
+              <img src="assets/cq-manga_poster.jpg" alt="만화 선택 번역">
+              <span class="media-tag"><span class="dot"></span>GIF</span>
+            </div>
+            <div class="media-box" onclick="openLb(this)">
+              <img src="assets/feat-manga-types.jpg" alt="만화 텍스트 유형" loading="lazy">
+              <span class="media-tag">📷 유형 소개</span>
+            </div>
+          </div>
+        </div>
+        <!-- 장면 4: SNS -->
+        <div class="ace-scene-row">
+          <div class="ace-scene-info">
+            <span class="ace-scene-tag">SNS</span>
+            <span class="ace-scene-title">밈 / 뉴스 스크린샷</span>
+          </div>
+          <div class="ace-scene-desc">Reddit / 트위터의 밈, 이모티콘 — 이전에는 이해할 수 없었습니다. 뉴스 다큐멘터리의 <b>역사 자료, 데이터 차트</b>도 일시정지 후 영역을 선택해 천천히 볼 수 있습니다.</div>
+          <div class="ace-scene-media">
+            <div class="media-box" onclick="openLb(this)">
+              <img src="assets/cq-meme.png" alt="밈 번역" loading="lazy">
+              <span class="media-tag">🖼️ 밈</span>
+            </div>
+            <div class="media-box" onclick="openLb(this)">
+              <img src="assets/feat-manga-social.jpg" alt="팬아트 선택 번역" loading="lazy">
+              <span class="media-tag">📷 팬아트</span>
+            </div>
+          </div>
+        </div>
+        <!-- 장면 5: 회의 -->
+        <div class="ace-scene-row">
+          <div class="ace-scene-info">
+            <span class="ace-scene-tag">회의</span>
+            <span class="ace-scene-title">온라인 회의 · 화면 공유</span>
+          </div>
+          <div class="ace-scene-desc">국제 회의에서 공유한 PPT, 데이터 대시보드, 시스템 인터페이스 → 이해되지 않는 영역을 선택 → 몇 초 만에 따라갈 수 있습니다. 상대방의 발언을 끊을 필요 없이.</div>
+          <div class="ace-scene-media">
+            <div class="media-box gif-poster" data-gif="assets/cq-meeting.gif" onclick="toggleGif(this)">
+              <img src="assets/cq-meeting_poster.jpg" alt="회의 장면">
+              <span class="media-tag"><span class="dot"></span>GIF</span>
+            </div>
+            <div class="media-box" onclick="openLb(this)">
+              <img src="assets/meeting-hero.webp" alt="회의 장면" loading="lazy">
+              <span class="media-tag">📷 블로그 스크린샷</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ace-howto-strip">
+        <span class="ace-howto-label">활성화 방법</span>
+        <span class="ace-howto-steps"><em>1.31.2+</em>로 업그레이드 → 설정 → 텍스트 선택 번역 → <em>선택 영역 번역</em> 활성화 → <em>Z 키</em>를 누른 채 영역 선택</span>
+        <div class="ace-howto-thumbs">
+          <img src="assets/cq-settings1.png" onclick="openLb(this)" alt="단계 1">
+          <img src="assets/cq-settings2.png" onclick="openLb(this)" alt="단계 2">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================
+     6개 새 기능
+     ============================================== -->
+<section class="section section-alt" id="sec-feat">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-title">
+        <img class="sec-logo" src="logo.jpg" alt="몰입형 번역">
+        <span>6개 새 기능 · 한눈에 보기</span>
+      </div>
+      <span class="sec-hint">필요에 따라 1-2개 선택</span>
+    </div>
+
+    <div class="feat-scroll-wrap">
+      <div class="feat-scroll">
+        <!-- 1: YouTube 라이브 -->
+        <div class="feat-card must">
+          <div class="feat-head">
+            <div class="feat-icon">🎬</div>
+            <div class="feat-name">YouTube 라이브 자막</div>
+            <span class="feat-tag must">필수</span>
+          </div>
+          <div class="feat-desc">외국어 라이브 방송을 실시간으로 중국어로. 경쟁사에서 거의 지원하지 않는 기능입니다.</div>
+          <a class="feat-video-link" href="https://www.youtube.com/watch?v=gCNeDWCI0vo" target="_blank" rel="noopener">
+            <img src="assets/feat-yt-live.jpg" alt="Al Jazeera 라이브" loading="lazy">
+            <div class="yt-play-btn"></div>
+            <div class="yt-badge">YouTube 라이브</div>
+          </a>
+          <div class="feat-hook">외국어 라이브, 이제 이해할 수 있어요</div>
+        </div>
+
+        <!-- 2: 번역 후 상호작용 유지 -->
+        <div class="feat-card must">
+          <div class="feat-head">
+            <div class="feat-icon">🌐</div>
+            <div class="feat-name">번역 후 상호작용 유지</div>
+            <span class="feat-tag must">필수</span>
+          </div>
+          <div class="feat-desc">번역 후에도 버튼을 클릭할 수 있고, 드롭다운도 펼칠 수 있습니다 — 웹페이지가 "살아" 있습니다.</div>
+          <video class="feat-video" src="assets/feat-interaction.mp4" poster="assets/feat-interaction-poster.jpg" preload="metadata" controls playsinline onclick="openLb(this)" style="cursor:zoom-in"></video>
+          <div class="feat-hook">번역 후에도 웹페이지 사용 가능</div>
+        </div>
+
+        <!-- 3: 긴 페이지 -->
+        <div class="feat-card hot">
+          <div class="feat-head">
+            <div class="feat-icon">📄</div>
+            <div class="feat-name">긴 페이지 성능 개선</div>
+            <span class="feat-tag hot">강력 추천</span>
+          </div>
+          <div class="feat-desc">매우 긴 웹페이지도 번역 시 끊김 없음. 다중 iframe 환경에서 속도 크게 향상.</div>
+          <video class="feat-video" src="assets/feat-longpage.mp4" poster="assets/feat-longpage-poster.jpg" preload="metadata" controls playsinline onclick="openLb(this)" style="cursor:zoom-in"></video>
+          <div class="feat-hook">긴 글도 끊김 없어요</div>
+        </div>
+
+        <!-- 4: AI 모델 -->
+        <div class="feat-card">
+          <div class="feat-head">
+            <div class="feat-icon">🤖</div>
+            <div class="feat-name">AI 모델 라인업 확대</div>
+            <span class="feat-tag aux">보조</span>
+          </div>
+          <div class="feat-desc">Grok, Tencent Hunyuan, plamo 등 다양한 모델 추가 선택 가능.</div>
+          <video class="feat-video" src="assets/feat-ai-model.mp4" poster="assets/feat-ai-model-poster.jpg" preload="metadata" controls playsinline onclick="openLb(this)" style="cursor:zoom-in"></video>
+          <div class="feat-hook">번역 엔진을 자유롭게 선택</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================
+     크리에이터 유형
+     ============================================== -->
+<section class="section" id="sec-kol">
+  <div class="wrap">
+    <div class="sec-header">
+      <div class="sec-title">
+        <span class="sec-icon">👥</span>
+        <span>추천 크리에이터 유형</span>
+      </div>
+      <span class="sec-hint">자신의 채널과 가장 잘 맞는 유형을 선택하세요</span>
+    </div>
+
+    <div class="kol-scroll-wrap">
+      <div class="kol-scroll">
+        <div class="kol-card">
+          <div class="kol-head">
+            <div class="kol-icon">📚</div>
+            <div><div class="kol-name">학술</div><div class="kol-sub">학생 · 연구자 · 대학원 준비</div></div>
+          </div>
+          <ul class="kol-list">
+            <li><b>BabelFast</b> · 논문 번역 순식간</li>
+            <li><b>긴 페이지 성능</b> · 위키백과 원활</li>
+            <li><b>라이브 자막</b> · 해외 공개 강의</li>
+          </ul>
+        </div>
+        <div class="kol-card">
+          <div class="kol-head">
+            <div class="kol-icon">⚡</div>
+            <div><div class="kol-name">생산성 도구</div><div class="kol-sub">AI 도구 · 생산성 크리에이터</div></div>
+          </div>
+          <ul class="kol-list">
+            <li><b>BabelFast</b> · 가장 직관적인 속도</li>
+            <li><b>번역 후 상호작용 유지</b> · 번역 후에도 사용 가능</li>
+            <li><b>AI 모델</b> · 기술 매니아 관심</li>
+          </ul>
+        </div>
+        <div class="kol-card">
+          <div class="kol-head">
+            <div class="kol-icon">🎨</div>
+            <div><div class="kol-name">만화 / 콘텐츠</div><div class="kol-sub">만화 · 한일 문화 · 최신화 팔로우</div></div>
+          </div>
+          <ul class="kol-list">
+            <li><b>선택 영역 번역</b> · Apple 사용자를 위한 이미지 번역</li>
+            <li><b>번역 후 상호작용 유지</b> · 페이지 넘기기 버튼 정상 작동</li>
+            <li><b>긴 페이지 성능</b> · 긴 챕터도 원활</li>
+          </ul>
+        </div>
+        <div class="kol-card">
+          <div class="kol-head">
+            <div class="kol-icon">💼</div>
+            <div><div class="kol-name">해외 판매 / 무역</div><div class="kol-sub">이커머스 · 해외 운영 · 무역</div></div>
+          </div>
+          <ul class="kol-list">
+            <li><b>BabelFast</b> · 상품 페이지 빠르게 번역</li>
+            <li><b>번역 후 상호작용 유지</b> · 장바구니 / 옵션 선택 정상</li>
+            <li><b>AI 모델</b> · 다국어 품질</li>
+          </ul>
+        </div>
+        <div class="kol-card">
+          <div class="kol-head">
+            <div class="kol-icon">💰</div>
+            <div><div class="kol-name">금융 / 투자</div><div class="kol-sub">미국 주식 · 중국 주식 · Web3</div></div>
+          </div>
+          <ul class="kol-list">
+            <li><b>BabelFast</b> · 실시간 정보 번역 빠르게</li>
+            <li><b>AI 모델</b> · Grok 등 전문 엔진</li>
+            <li><b>번역 후 상호작용 유지</b> · 차트 확인 가능</li>
+          </ul>
+        </div>
+        <div class="kol-card">
+          <div class="kol-head">
+            <div class="kol-icon">🧳</div>
+            <div><div class="kol-name">여행 / 라이프스타일</div><div class="kol-sub">여행 블로거 · 라이프스타일</div></div>
+          </div>
+          <ul class="kol-list">
+            <li><b>선택 영역 번역</b> · vlog 메뉴/간판 선택 번역</li>
+            <li><b>AI 모델</b> · 다국어 여행 콘텐츠</li>
+            <li><b>라이브 자막</b> · 외국어 라이브 실시간 번역</li>
+          </ul>
+        </div>
+        <div class="kol-card">
+          <div class="kol-head">
+            <div class="kol-icon">🎓</div>
+            <div><div class="kol-name">교육 / 튜토리얼</div><div class="kol-sub">지식 크리에이터 · 강의 공유</div></div>
+          </div>
+          <ul class="kol-list">
+            <li><b>선택 영역 번역</b> → 일시정지 후 PPT/칠판 선택</li>
+            <li><b>BabelFast</b> · 긴 글 번역 대기 없음</li>
+            <li><b>AI 모델</b> · 학술 엔진 높은 품질</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================================
+     비즈니스 상담
+     ============================================== -->
+<section class="section" id="sec-contact" style="padding-bottom:48px;">
+  <div class="wrap">
+    <div class="contact-strip">
+      <h3>비즈니스 상담</h3>
+      <p class="contact-sub">연락처를 클릭하여 복사 · 광고 집행 전 연락하여 추적 링크를 받으세요</p>
+      <div class="contact-grid">
+        <div class="contact-cell">
+          <div class="contact-platform">📕 샤오홍슈</div>
+          <button class="copy-btn" data-copy="huangshiyao@funstory.ai" onclick="doCopy(this)">📋 연락처 복사</button>
+        </div>
+        <div class="contact-cell">
+          <div class="contact-platform">📺 Bilibili</div>
+          <button class="copy-btn" data-copy="Goldfish-74" onclick="doCopy(this)">💬 연락처 복사</button>
+        </div>
+        <div class="contact-cell">
+          <div class="contact-platform">🎵 더우인</div>
+          <button class="copy-btn" data-copy="ma314227840" onclick="doCopy(this)">📋 연락처 복사</button>
+        </div>
+        <div class="contact-cell">
+          <div class="contact-platform">🔵 즈후</div>
+          <button class="copy-btn" data-copy="z15201126125" onclick="doCopy(this)">💬 연락처 복사</button>
+        </div>
+        <div class="contact-cell">
+          <div class="contact-platform">💬 위챗 공식계정</div>
+          <button class="copy-btn" data-copy="Goldfish-74" onclick="doCopy(this)">📋 연락처 복사</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Lightbox ===== -->
+<div class="lightbox" id="lb" onclick="closeLb(event)">
+  <button class="lightbox-x" onclick="closeLb(event)">✕</button>
+  <img id="lb-img" src="" alt="">
+  <video id="lb-vid" src="" controls playsinline style="display:none"></video>
+</div>
+
+<!-- ===== 푸터 ===== -->
+<footer class="site-footer">
+  <div class="f-brand">
+    <img src="logo.jpg" alt="" style="width:24px;height:24px;border-radius:6px;vertical-align:middle;margin-right:8px;">
+    몰입형 번역
+  </div>
+  <p>KOL 협업 · 새 기능 홍보 · 2026 하반기</p>
+  <p style="margin-top:2px;">공식 사이트 <a href="https://immersivetranslate.com" target="_blank">immersivetranslate.com</a></p>
+</footer>
+
+<script>
+// 복사
+function doCopy(el) {
+  var v = el.getAttribute('data-copy');
+  if (!v) return;
+  navigator.clipboard.writeText(v);
+  el.classList.add('copied');
+  var orig = el.textContent;
+  el.textContent = '✓ 복사됨';
+  setTimeout(function(){ el.classList.remove('copied'); el.textContent = orig; }, 1500);
+}
+
+// GIF 전환
+function toggleGif(el) {
+  var img = el.querySelector('img');
+  var gifUrl = el.getAttribute('data-gif');
+  if (!img.dataset.poster) img.dataset.poster = img.src;
+  if (img.src.indexOf('.gif') > -1) {
+    img.src = img.dataset.poster;
+    el.classList.remove('playing');
+  } else {
+    img.src = gifUrl;
+    el.classList.add('playing');
+  }
+}
+
+// Lightbox
+function openLb(arg) {
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lb-img');
+  var lbVid = document.getElementById('lb-vid');
+  
+  // Handle video elements
+  var vid = arg.tagName === 'VIDEO' ? arg : arg.querySelector('video');
+  if (vid) {
+    if (lbImg) lbImg.style.display = 'none';
+    if (lbVid) {
+      lbVid.src = vid.src;
+      lbVid.style.display = 'block';
+      lbVid.load();
+      lbVid.play();
+    }
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    return;
+  }
+  
+  // Handle image elements
+  var img = arg.tagName === 'IMG' ? arg : arg.querySelector('img');
+  if (!img) return;
+  if (lbVid) { lbVid.style.display = 'none'; lbVid.pause(); lbVid.src = ''; }
+  if (lbImg) {
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbImg.style.display = 'block';
+  }
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb(e) {
+  if (e.target.id === 'lb' || e.target.classList.contains('lightbox-x')) {
+    var lb = document.getElementById('lb');
+    var lbVid = document.getElementById('lb-vid');
+    if (lbVid) { lbVid.pause(); lbVid.src = ''; }
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') {
+    var lb = document.getElementById('lb');
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// 내비게이션 하이라이트
+var navLinks = document.querySelectorAll('.nav-link');
+var spyIds = ['sec-ace','sec-feat','sec-kol','sec-contact'];
+var spyEls = spyIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+var spyObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if (entry.isIntersecting) {
+      var id = entry.target.id;
+      navLinks.forEach(function(link){
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -60% 0px' });
+spyEls.forEach(function(el){ spyObs.observe(el); });
+
+// 앵커 링크 부드러운 스크롤
+navLinks.forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var id = a.getAttribute('href').slice(1);
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
