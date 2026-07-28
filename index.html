@@ -12,7 +12,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 60px; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
   color: #1D1D1F;
   line-height: 1.6;
   background: #FBFBFD;
@@ -155,7 +155,7 @@ body {
 .sec-hint { font-size: 13px; color: #999; font-weight: 400; }
 
 /* ========================================
-   두 가지 핵심 기능 — 흰 배경 대형 이미지
+   두 가지 핵심 기능区块 — 白底大图展示
    ======================================== */
 .ace-feature {
   background: white;
@@ -167,6 +167,7 @@ body {
   box-shadow: 0 2px 20px rgba(0,0,0,0.04);
 }
 
+/* 王牌头部 */
 .ace-head {
   padding: 32px 36px 0;
   display: flex;
@@ -198,6 +199,7 @@ body {
   line-height: 1.6;
 }
 
+/* 王牌大图区 */
 .ace-hero-img {
   margin: 24px 36px 0;
   border-radius: 14px;
@@ -209,6 +211,7 @@ body {
 .ace-hero-img:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
 .ace-hero-img img { width: 100%; display: block; }
 
+/* 核心卖点 pills */
 .ace-pills {
   display: flex; gap: 8px; margin: 20px 36px 0;
   flex-wrap: wrap;
@@ -224,6 +227,7 @@ body {
   white-space: nowrap;
 }
 
+/* 速度对比条 */
 .speed-bar {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -255,6 +259,7 @@ body {
 .speed-val.slow { color: #CCC; }
 .speed-val .u { font-size: 11px; color: #999; margin-left: 2px; }
 
+/* 场景行 — 全宽大图 */
 .ace-scenes {
   margin: 28px 36px 0;
   display: flex;
@@ -299,6 +304,7 @@ body {
 }
 .ace-scene-desc b { color: #EA4C89; font-weight: 600; }
 
+/* 场景媒体 */
 .ace-scene-media {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -320,43 +326,6 @@ body {
   transition: transform 0.3s;
 }
 .ace-scene-media .media-box:hover img { transform: scale(1.03); }
-
-/* 비교 영상 레이아웃 */
-.ace-compare-media {
-  grid-template-columns: 1fr 1fr !important;
-}
-.compare-col {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.compare-label {
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 6px;
-  text-align: center;
-  flex-shrink: 0;
-}
-.compare-off {
-  background: #FFF0F0;
-  color: #CC0000;
-  border: 1px solid #FFD6D6;
-}
-.compare-on {
-  background: #FFF0F5;
-  color: #EA4C89;
-  border: 1px solid #FFD6E4;
-}
-.compare-vid {
-  width: 100%;
-  border-radius: 10px;
-  background: #F5F5F5;
-  border: 1px solid #F0F0F0;
-  display: block;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
 .media-tag {
   position: absolute; top: 8px; left: 8px;
   background: rgba(0,0,0,0.65);
@@ -378,6 +347,7 @@ body {
   50% { opacity: 1; transform: scale(1.2); }
 }
 
+/* GIF 海报播放按钮 */
 .gif-poster { cursor: pointer; position: relative; }
 .gif-poster::after {
   content: '\25B6';
@@ -395,6 +365,7 @@ body {
 .gif-poster:hover::after { transform: translate(-50%,-50%) scale(1.12); }
 .gif-poster.playing::after { display: none; }
 
+/* 如何开启 */
 .ace-howto-strip {
   margin: 0 36px 28px;
   padding: 16px 20px;
@@ -436,7 +407,7 @@ body {
   cursor: zoom-in;
 }
 
-/* ===== 6개 기능 카드 ===== */
+/* ===== 6 功能卡片 ===== */
 .feat-scroll-wrap {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -527,6 +498,7 @@ body {
   border-top: 1px solid #F5F5F5;
 }
 
+/* YouTube 视频卡片 */
 .feat-video-link {
   display: block;
   width: 100%;
@@ -577,7 +549,7 @@ body {
   pointer-events: none;
 }
 
-/* ===== KOL 카드 ===== */
+/* ===== KOL 卡片 ===== */
 .kol-scroll-wrap {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -709,7 +681,7 @@ body {
   color: white !important;
 }
 
-/* ===== 푸터 ===== */
+/* ===== 页脚 ===== */
 .site-footer {
   background: #1D1D1F;
   color: rgba(255,255,255,0.4);
@@ -760,6 +732,44 @@ body {
 }
 .lightbox-x:hover { background: rgba(255,255,255,0.3); }
 
+
+/* 비교 영상 레이아웃 */
+.ace-compare-media {
+  grid-template-columns: 1fr 1fr !important;
+}
+.compare-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.compare-label {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.compare-off {
+  background: #FFF0F0;
+  color: #CC0000;
+  border: 1px solid #FFD6D6;
+}
+.compare-on {
+  background: #FFF0F5;
+  color: #EA4C89;
+  border: 1px solid #FFD6E4;
+}
+.compare-vid {
+  width: 100%;
+  border-radius: 10px;
+  background: #F5F5F5;
+  border: 1px solid #F0F0F0;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
 /* ===== 반응형 ===== */
 @media (max-width: 880px) {
   .hero h1 { font-size: 30px; }
@@ -798,11 +808,11 @@ body {
     <img class="hero-logo" src="logo.jpg" alt="몰입형 번역">
     <span class="hero-badge">2026 새 기능 빠르게 보기 · KOL 촬영 가이드</span>
   </div>
-  <h1>중국 KOL × <em>몰입형 번역</em></h1>
+  <h1>한국 KOL × <em>몰입형 번역</em></h1>
   <p class="hero-sub">BabelFast 초고속 번역 + 선택 영역 번역 · 관심 있는 기능을 골라 촬영하세요<br>지난 반년간 가장 돋보였던 업데이트 기능이며, 새로운 기능이 추가되면 계속 업데이트됩니다</p>
 </header>
 
-<!-- ===== 내비게이션 ===== -->
+<!-- ===== 导航 ===== -->
 <nav class="nav-bar">
   <div class="nav-inner">
     <a class="nav-link" href="#sec-ace">두 가지 핵심 기능</a>
@@ -820,7 +830,7 @@ body {
     <div class="sec-header">
       <div class="sec-title">
         <span class="sec-icon">⚡</span>
-        <span>두 가지 핵심 기능 · 집중 촬영</span>
+        <span>두 가지 핵심 기능 · 重点拍摄</span>
       </div>
       <span class="sec-hint">이번 시즌 차별화의 핵심</span>
     </div>
@@ -843,29 +853,29 @@ body {
         <div class="speed-side fast">
           <div class="speed-name">BabelFast <em>· 순간 완료</em></div>
           <div class="speed-track"><div class="speed-fill" style="width:12%"></div></div>
-          <div class="speed-val">0.3<span class="u">초</span></div>
+          <div class="speed-val">0.3<span class="u">s</span></div>
         </div>
         <div class="speed-side">
           <div class="speed-name">일반 엔진</div>
           <div class="speed-track"><div class="speed-fill" style="width:100%;opacity:0.25"></div></div>
-          <div class="speed-val slow">3.2<span class="u">초</span></div>
+          <div class="speed-val slow">3.2<span class="u">s</span></div>
         </div>
       </div>
 
       <div class="ace-pills">
-        <span class="ace-pill">🚀 10배 속도 향상</span>
+        <span class="ace-pill"> 10배 속도 향상</span>
         <span class="ace-pill">📦 전체 페이지 병렬 패키징 번역</span>
-        <span class="ace-pill">🧪 실험적 엔진</span>
+        <span class="ace-pill"> 실험적 엔진</span>
       </div>
 
       <div class="ace-scenes">
-        <!-- 장면 1 -->
+        <!-- 장면 1: 분할 화면 비교 -->
         <div class="ace-scene-row">
           <div class="ace-scene-info">
             <span class="ace-scene-tag">필수</span>
-            <span class="ace-scene-title">BabelFast 실전 시연</span>
+            <span class="ace-scene-title">분할 화면 비교</span>
           </div>
-          <div class="ace-scene-desc">BabelFast가 실제 웹페이지에서 얼마나 빠르게 번역되는지 직접 확인하세요. 만 단어 분량도 순식간에 완료됩니다.</div>
+          <div class="ace-scene-desc">같은 만 단어 장문을 왼쪽에 경쟁사/일반 엔진, 오른쪽에 BabelFast로 번역. 타이머를 표시해 시간 차이가 클수록 임팩트가 강해집니다.</div>
           <div class="ace-scene-media ace-compare-media">
             <div class="compare-col">
               <div class="compare-label compare-off">BabelFast 비활성</div>
@@ -877,7 +887,7 @@ body {
             </div>
           </div>
         </div>
-        <!-- 장면 2 -->
+        <!-- 장면 2: 페인포인트 -->
         <div class="ace-scene-row">
           <div class="ace-scene-info">
             <span class="ace-scene-tag">페인포인트</span>
@@ -887,11 +897,11 @@ body {
           <div class="ace-scene-media">
             <div class="media-box" onclick="openLb(this)">
               <img src="assets/kr-bf-painpoint.jpg" alt="번역 과정: AI가 번역 중">
-              <span class="media-tag">📷 번역 과정</span>
+              <span class="media-tag">📷 페인포인트→해결</span>
             </div>
           </div>
         </div>
-        <!-- 장면 3 -->
+        <!-- 场景 3 -->
         <div class="ace-scene-row">
           <div class="ace-scene-info">
             <span class="ace-scene-tag">다양성</span>
@@ -916,7 +926,7 @@ body {
       </div>
     </div>
 
-    <!-- ========== 선택 영역 번역 ========== -->
+    <!-- ========== 圈选翻译 ========== -->
     <div class="ace-feature">
       <div class="ace-head">
         <div class="ace-head-icon">🎯</div>
@@ -931,10 +941,10 @@ body {
       </div>
 
       <div class="ace-pills">
-        <span class="ace-pill">✅ 끊김 없음</span>
+        <span class="ace-pill"> 끊김 없음</span>
         <span class="ace-pill">🎯 정밀 영역 선택</span>
-        <span class="ace-pill">🎨 원래 레이아웃 유지</span>
-        <span class="ace-pill">🤖 20개 이상 AI 엔진</span>
+        <span class="ace-pill"> 원래 레이아웃 유지</span>
+        <span class="ace-pill">🤖 20+ AI 引擎</span>
       </div>
 
       <div class="ace-scenes">
@@ -948,25 +958,25 @@ body {
           <div class="ace-scene-media">
             <div class="media-box" onclick="openLb(this)">
               <img src="assets/kr-cq-menu.jpg" alt="손글씨 메뉴 번역" loading="lazy">
-              <span class="media-tag">메뉴 번역</span>
+              <span class="media-tag"> 메뉴 번역</span>
             </div>
           </div>
         </div>
-        <!-- 장면 2: 튜토리얼 -->
+        <!-- 场景 2: 教程 -->
         <div class="ace-scene-row">
           <div class="ace-scene-info">
             <span class="ace-scene-tag">튜토리얼</span>
-            <span class="ace-scene-title">PPT / 칠판 / 코드</span>
+            <span class="ace-scene-title">PPT / 판 / 코드</span>
           </div>
           <div class="ace-scene-desc">Coursera / Udemy 온라인 강의 → 일시정지 → <b>PPT 정의, 칠판 필기, 코드 시연</b> 영역 선택 → 원 위치에 중국어 표시.</div>
           <div class="ace-scene-media">
-            <div class="media-box gif-poster" data-gif="assets/kr-cq-compare.jpg" onclick="toggleGif(this)">
-              <img src="assets/kr-cq-compare.jpg" alt="PPT 선택 번역">
+            <div class="media-box gif-poster" data-gif="assets/cq-ppt.gif" onclick="toggleGif(this)">
+              <img src="assets/cq-ppt_poster.jpg" alt="PPT 선택 번역">
               <span class="media-tag"><span class="dot"></span>GIF</span>
             </div>
             <div class="media-box" onclick="openLb(this)">
-              <img src="assets/kr-cq-compare.jpg" alt="블로그 예시" loading="lazy">
-              <span class="media-tag">📷 블로그</span>
+              <img src="assets/cq-step2.webp" alt="블로그 예시" loading="lazy">
+              <span class="media-tag">📷 博客</span>
             </div>
           </div>
         </div>
@@ -983,6 +993,8 @@ body {
               <span class="media-tag">📷 만화 번역</span>
             </div>
           </div>
+        </div>
+        <!-- 장면 4: SNS -->
         <div class="ace-scene-row">
           <div class="ace-scene-info">
             <span class="ace-scene-tag">SNS</span>
@@ -991,12 +1003,12 @@ body {
           <div class="ace-scene-desc">Reddit / 트위터의 밈, 이모티콘 — 이전에는 이해할 수 없었습니다. 뉴스 다큐멘터리의 <b>역사 자료, 데이터 차트</b>도 일시정지 후 영역을 선택해 천천히 볼 수 있습니다.</div>
           <div class="ace-scene-media">
             <div class="media-box" onclick="openLb(this)">
-              <img src="assets/kr-cq-sns1.jpg" alt="밈 번역" loading="lazy">
-              <span class="media-tag">🖼️ 밈</span>
+              <img src="assets/kr-cq-sns1.jpg" alt="SNS 일본어 이미지 번역" loading="lazy">
+              <span class="media-tag">🖼️ SNS 이미지</span>
             </div>
             <div class="media-box" onclick="openLb(this)">
-              <img src="assets/kr-cq-sns2.jpg" alt="팬아트 선택 번역" loading="lazy">
-              <span class="media-tag">📷 팬아트</span>
+              <img src="assets/kr-cq-sns2.jpg" alt="해외 SNS 게시물 번역" loading="lazy">
+              <span class="media-tag">🖼️ 해외 SNS</span>
             </div>
           </div>
         </div>
@@ -1036,7 +1048,7 @@ body {
     <div class="sec-header">
       <div class="sec-title">
         <img class="sec-logo" src="logo.jpg" alt="몰입형 번역">
-        <span>6개 새 기능 · 한눈에 보기</span>
+        <span>6개 새 기능 · 一图速览</span>
       </div>
       <span class="sec-hint">필요에 따라 1-2개 선택</span>
     </div>
@@ -1062,7 +1074,7 @@ body {
         <!-- 2: 번역 후 상호작용 유지 -->
         <div class="feat-card must">
           <div class="feat-head">
-            <div class="feat-icon">🌐</div>
+            <div class="feat-icon"></div>
             <div class="feat-name">번역 후 상호작용 유지</div>
             <span class="feat-tag must">필수</span>
           </div>
@@ -1074,7 +1086,7 @@ body {
         <!-- 3: 긴 페이지 -->
         <div class="feat-card hot">
           <div class="feat-head">
-            <div class="feat-icon">📄</div>
+            <div class="feat-icon"></div>
             <div class="feat-name">긴 페이지 성능 개선</div>
             <span class="feat-tag hot">강력 추천</span>
           </div>
@@ -1107,7 +1119,7 @@ body {
     <div class="sec-header">
       <div class="sec-title">
         <span class="sec-icon">👥</span>
-        <span>추천 크리에이터 유형</span>
+        <span>크리에이터 유형推荐</span>
       </div>
       <span class="sec-hint">자신의 채널과 가장 잘 맞는 유형을 선택하세요</span>
     </div>
@@ -1138,7 +1150,7 @@ body {
         </div>
         <div class="kol-card">
           <div class="kol-head">
-            <div class="kol-icon">🎨</div>
+            <div class="kol-icon"></div>
             <div><div class="kol-name">만화 / 콘텐츠</div><div class="kol-sub">만화 · 한일 문화 · 최신화 팔로우</div></div>
           </div>
           <ul class="kol-list">
@@ -1186,7 +1198,7 @@ body {
             <div><div class="kol-name">교육 / 튜토리얼</div><div class="kol-sub">지식 크리에이터 · 강의 공유</div></div>
           </div>
           <ul class="kol-list">
-            <li><b>선택 영역 번역</b> → 일시정지 후 PPT/칠판 선택</li>
+            <li><b>선택 영역 번역</b> → 일시정지 후 PPT/판 선택</li>
             <li><b>BabelFast</b> · 긴 글 번역 대기 없음</li>
             <li><b>AI 모델</b> · 학술 엔진 높은 품질</li>
           </ul>
@@ -1207,23 +1219,23 @@ body {
       <div class="contact-grid">
         <div class="contact-cell">
           <div class="contact-platform">📕 샤오홍슈</div>
-          <button class="copy-btn" data-copy="huangshiyao@funstory.ai" onclick="doCopy(this)">📋 연락처 복사</button>
+          <button class="copy-btn" data-copy="huangshiyao@funstory.ai" onclick="doCopy(this)"> 연락처 복사</button>
         </div>
         <div class="contact-cell">
-          <div class="contact-platform">📺 Bilibili</div>
+          <div class="contact-platform">📺📺 Bilibili</div>
           <button class="copy-btn" data-copy="Goldfish-74" onclick="doCopy(this)">💬 연락처 복사</button>
         </div>
         <div class="contact-cell">
-          <div class="contact-platform">🎵 더우인</div>
-          <button class="copy-btn" data-copy="ma314227840" onclick="doCopy(this)">📋 연락처 복사</button>
+          <div class="contact-platform"> 더우인</div>
+          <button class="copy-btn" data-copy="ma314227840" onclick="doCopy(this)"> 연락처 복사</button>
         </div>
         <div class="contact-cell">
           <div class="contact-platform">🔵 즈후</div>
           <button class="copy-btn" data-copy="z15201126125" onclick="doCopy(this)">💬 연락처 복사</button>
         </div>
         <div class="contact-cell">
-          <div class="contact-platform">💬 위챗 공식계정</div>
-          <button class="copy-btn" data-copy="Goldfish-74" onclick="doCopy(this)">📋 연락처 복사</button>
+          <div class="contact-platform"> 위챗 공식계정</div>
+          <button class="copy-btn" data-copy="Goldfish-74" onclick="doCopy(this)"> 연락처 복사</button>
         </div>
       </div>
     </div>
@@ -1237,7 +1249,7 @@ body {
   <video id="lb-vid" src="" controls playsinline style="display:none"></video>
 </div>
 
-<!-- ===== 푸터 ===== -->
+<!-- ===== 页脚 ===== -->
 <footer class="site-footer">
   <div class="f-brand">
     <img src="logo.jpg" alt="" style="width:24px;height:24px;border-radius:6px;vertical-align:middle;margin-right:8px;">
@@ -1248,7 +1260,7 @@ body {
 </footer>
 
 <script>
-// 복사
+// 复制
 function doCopy(el) {
   var v = el.getAttribute('data-copy');
   if (!v) return;
@@ -1259,7 +1271,7 @@ function doCopy(el) {
   setTimeout(function(){ el.classList.remove('copied'); el.textContent = orig; }, 1500);
 }
 
-// GIF 전환
+// GIF 切换
 function toggleGif(el) {
   var img = el.querySelector('img');
   var gifUrl = el.getAttribute('data-gif');
@@ -1323,7 +1335,7 @@ document.addEventListener('keydown', function(e){
   }
 });
 
-// 내비게이션 하이라이트
+// 导航高亮
 var navLinks = document.querySelectorAll('.nav-link');
 var spyIds = ['sec-ace','sec-feat','sec-kol','sec-contact'];
 var spyEls = spyIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
@@ -1339,7 +1351,7 @@ var spyObs = new IntersectionObserver(function(entries){
 }, { rootMargin: '-20% 0px -60% 0px' });
 spyEls.forEach(function(el){ spyObs.observe(el); });
 
-// 앵커 링크 부드러운 스크롤
+// 索引链接平滑滚动
 navLinks.forEach(function(a){
   a.addEventListener('click', function(e){
     e.preventDefault();
