@@ -320,6 +320,43 @@ body {
   transition: transform 0.3s;
 }
 .ace-scene-media .media-box:hover img { transform: scale(1.03); }
+
+/* 비교 영상 레이아웃 */
+.ace-compare-media {
+  grid-template-columns: 1fr 1fr !important;
+}
+.compare-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.compare-label {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.compare-off {
+  background: #FFF0F0;
+  color: #CC0000;
+  border: 1px solid #FFD6D6;
+}
+.compare-on {
+  background: #FFF0F5;
+  color: #EA4C89;
+  border: 1px solid #FFD6E4;
+}
+.compare-vid {
+  width: 100%;
+  border-radius: 10px;
+  background: #F5F5F5;
+  border: 1px solid #F0F0F0;
+  display: block;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
 .media-tag {
   position: absolute; top: 8px; left: 8px;
   background: rgba(0,0,0,0.65);
@@ -829,10 +866,14 @@ body {
             <span class="ace-scene-title">분할 화면 비교</span>
           </div>
           <div class="ace-scene-desc">같은 만 단어 장문을 왼쪽에 경쟁사/일반 엔진, 오른쪽에 BabelFast로 번역. 타이머를 표시해 시간 차이가 클수록 임팩트가 강해집니다.</div>
-          <div class="ace-scene-media">
-            <div class="media-box gif-poster" data-gif="assets/bf-split.gif" onclick="toggleGif(this)">
-              <img src="assets/bf-split_poster.jpg" alt="분할 화면 비교">
-              <span class="media-tag"><span class="dot"></span>GIF</span>
+          <div class="ace-scene-media ace-compare-media">
+            <div class="compare-col">
+              <div class="compare-label compare-off">BabelFast 비활성</div>
+              <video class="compare-vid" src="assets/bf-off.mp4" poster="assets/bf-off.jpg" preload="metadata" controls playsinline onclick="openLb(this)" style="cursor:zoom-in"></video>
+            </div>
+            <div class="compare-col">
+              <div class="compare-label compare-on">BabelFast 활성</div>
+              <video class="compare-vid" src="assets/bf-on.mp4" poster="assets/bf-on.jpg" preload="metadata" controls playsinline onclick="openLb(this)" style="cursor:zoom-in"></video>
             </div>
           </div>
         </div>
